@@ -6,20 +6,15 @@ namespace cool {
         public get x() { return this.x_; }
         public set x(v: Fx8) {
             if (this.readonly) throw "hey";
+            this.dirty = this.dirty || this.x_ !== v;
             this.x_ = v;
-            this.dirty = true;
         }
         public get y() { return this.y_; }
         public set y(v: Fx8) {
             if (this.readonly) throw "hey";
+            this.dirty = this.dirty || this.x_ !== v;
             this.y_ = v;
-            this.dirty = true;
         }
-
-        public get u() { return this.x_; }
-        public set u(n) { this.x = n; }
-        public get v() { return this.y_; }
-        public set v(n) { this.y = n; }
 
         constructor(public x_ = Fx.zeroFx8, public y_ = Fx.zeroFx8) {
         }

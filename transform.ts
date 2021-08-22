@@ -39,25 +39,23 @@ namespace cool {
         public get localPos(): Vec2 { return this.localPos_; }
         public set localPos(v: Vec2) {
             this.localPos_.copyFrom(v);
-            this.dirty_ = true;
         }
 
         public get localRot() { return this.localRot_; }
         public set localRot(v: number) {
+            this.dirty_ = this.dirty_ || this.localRot_ !== v;
             this.localRot_ = v;
-            this.dirty_ = true;
         }
 
         public get localScl() { return this.localScl_; }
         public set localScl(v: Vec2) {
             this.localScl_.copyFrom(v);
-            this.dirty_ = true;
         }
 
         public get parent() { return this.parent_; }
         public set parent(p: Transform) {
+            this.dirty_ = this.dirty_ || this.parent_ !== p;
             this.parent_ = p;
-            this.dirty_ = true;
         }
 
         public get root() {
