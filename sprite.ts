@@ -24,8 +24,8 @@ namespace cool {
         __update(camera: scene.Camera, dt: number) {
             for (let i = 0; i < this.src.length; ++i) {
                 this.xfrm_.transformToRef(this.src[i], this.verts[i]);
-                this.verts[i].x = Fx.iadd(camera.drawOffsetX, this.verts[i].x);
-                this.verts[i].y = Fx.iadd(camera.drawOffsetY, this.verts[i].y);
+                this.verts[i].x = Fx.iadd(camera.drawOffsetX - screen.width >> 1, this.verts[i].x);
+                this.verts[i].y = Fx.iadd(camera.drawOffsetY - screen.height >> 1, this.verts[i].y);
             }
         }
 
