@@ -1,5 +1,5 @@
 namespace cool {
-    export class Sprite extends sprites.BaseSprite {
+    export class Sprite extends scene.Renderable {
         private xfrm_: Transform;
         private src: Vec2[]; // const
         private verts: Vec2[];
@@ -7,7 +7,10 @@ namespace cool {
         public get xfrm() { return this.xfrm_; }
 
         constructor(private img: Image) {
-            super(scene.SPRITE_Z);
+            super(
+                (target, camera) => {},
+                () => true,
+                scene.SPRITE_Z);
             this.xfrm_ = new Transform();
             const w2 = Fx8(img.width >> 1);
             const h2 = Fx8(img.height >> 1);
