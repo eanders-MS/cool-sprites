@@ -41,10 +41,10 @@ namespace cool.fx {
     }
     export function sin(angle: number): Fx8 {
         // lazy implementation
-        return Fx8(Math.sin(angle * 180 / Math.PI));
+        return Fx8(Math.sin(angle));
     }
     export function cos(angle: number): Fx8 {
         // lazy implementation
-        return Fx8(Math.cos(angle * 180 / Math.PI));
+        return Fx8(Math.cos(angle));
     }
 }
