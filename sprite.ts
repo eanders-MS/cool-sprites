@@ -12,6 +12,11 @@ namespace cool {
                 () => true,
                 scene.SPRITE_Z);
             this.xfrm_ = new Transform();
+            this.setImage(img);
+        }
+
+        public setImage(img: Image) {
+            this.img = img;
             const w2 = Fx8(img.width >> 1);
             const h2 = Fx8(img.height >> 1);
             // Vertices in clockwise order
