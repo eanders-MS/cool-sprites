@@ -10,7 +10,6 @@
         "assets.json",
         "transform.ts",
         "vec2.ts",
-        "vec3.ts",
         "fx.ts",
         "sprite.ts"
     ],
