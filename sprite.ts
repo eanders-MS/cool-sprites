@@ -1,6 +1,4 @@
 namespace cool {
-    const bknd = scene.backgroundImage();
-
     export class Sprite extends sprites.BaseSprite {
         private xfrm_: Transform;
         private src: Vec2[]; // const
@@ -24,14 +22,15 @@ namespace cool {
         }
 
         __update(camera: scene.Camera, dt: number) {
-            // TODO: add camera offset
             for (let i = 0; i < this.src.length; ++i) {
                 this.xfrm_.transformToRef(this.src[i], this.verts[i]);
+                this.verts[i].x = Fx.iadd(camera.drawOffsetX, this.verts[i].x);
+                this.verts[i].y = Fx.iadd(camera.drawOffsetY, this.verts[i].y);
             }
         }
 
         __drawCore(camera: scene.Camera) {
-            bknd.drawQuad(
+            screen.drawQuad(
                 this.img,
                 Fx.toInt(this.verts[0].x),
                 Fx.toInt(this.verts[0].y),
