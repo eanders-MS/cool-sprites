@@ -19,12 +19,16 @@ namespace cool {
         public tag: string;
 
         public get dirty(): boolean {
-            return this.dirty_ || this.localPos_.dirty || (this.parent && this.parent.dirty);
+            return this.dirty_ || this.localPos_.dirty || this.localScl_.dirty || (this.parent && this.parent.dirty);
+        }
+        public set dirty(v) {
+            this.dirty_ = false;
+            this.localPos_.dirty = false;
+            this.localScl_.dirty = false;
         }
 
         public get worldPos() {
             if (this.dirty) { this.recalc(); }
-            //return new Vec2(this.world_.m[2], this.world_.m[5]);
             return this.worldPos_;
         }
         public get worldRot() {
@@ -91,7 +95,7 @@ namespace cool {
 
         public recalc(force = false) {
             if (this.dirty || force) {
-                this.dirty_ = false;
+                this.dirty = false;
                 if (this.parent) {
                     const ppos = this.parent.worldPos;
                     const prot = this.parent.worldRot;
