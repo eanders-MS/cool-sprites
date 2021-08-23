@@ -1,33 +1,20 @@
  
 
+# HACK 2021 "Cool Sprites" Extension for Arcade
 
-> Open this page at [https://eanders-ms.github.io/cool-sprites/](https://eanders-ms.github.io/cool-sprites/)
+I should have named this **quad sprites**. This extension defines a new kind of **Sprite** that renders itself using a native method called `drawQuad`. `drawQuad` is a generalized rendering method that can rasterize a sprite at any rotation, scale, and quadrilateral shape (trapazoid, parallelogram, rhombus, etc). *It doesn't care.*
 
-## Use as Extension
+This extension also defines a **Transform** class for use with the new Sprite type, allowing the sprite to be freely **scaled**, **translated**, and **rotated**.
 
-This repository can be added as an **extension** in MakeCode.
+Transforms can be **parented**, allowing one sprite to be the **parent** of another. The **child** sprite will inherit movement, rotation, and scale from the parent, and add its own. You can think of it as being like the relationship between your arms and your body; whenever your body moves, your arms also move. They inherit the movement characteristics from the thing they're attached to.
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/eanders-ms/cool-sprites** and import
+`drawQuad` implementation is here: https://github.com/microsoft/pxt-common-packages/commit/152a418ededefc191d0e608521732ea5169cdcfa
 
-## Edit this project ![Build status badge](https://github.com/eanders-ms/cool-sprites/workflows/MakeCode/badge.svg)
+**NOTE**: This extension must be used with a version of Arcade that includes the `drawQuad` function, like this one: https://arcade.makecode.com/app/7ae712dd21ba79dc363df2b2a802237a110571a2-2f277d2e1b
 
-To edit this repository in MakeCode.
+See the [demos](./demos) folder for some demos you can import into the above target, and see cool sprites in action!
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/eanders-ms/cool-sprites** and click import
-
-## Blocks preview
-
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
-
-![A rendered view of the blocks](https://github.com/eanders-ms/cool-sprites/raw/master/.github/makecode/blocks.png)
-
-#### Metadata (used for search, rendering)
-
-* for PXT/arcade
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+![cool cow](./demos/arcade-cool-cow-hack-2021.png)
+![cool ducks](./demos/arcade-cool-ducks-hack-2021.png)
+![cool galaga bug](./demos/arcade-cool-galaga-bug-hack-2021.png)
+![cool orrery](./demos/arcade-cool-orrery-hack-2021.png)
