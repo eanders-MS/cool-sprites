@@ -1,4 +1,7 @@
 namespace cool {
+    const SCREEN_HALF_WIDTH = screen.width >> 1;
+    const SCREEN_HALF_HEIGHT = screen.height >> 1;
+
     export class Sprite extends scene.Renderable {
         private xfrm_: Transform;
         private src: Vec2[]; // const
@@ -32,8 +35,8 @@ namespace cool {
         __update(camera: scene.Camera, dt: number) {
             for (let i = 0; i < this.src.length; ++i) {
                 this.xfrm_.transformToRef(this.src[i], this.verts[i]);
-                this.verts[i].x = Fx.iadd(camera.drawOffsetX + screen.width >> 1, this.verts[i].x);
-                this.verts[i].y = Fx.iadd(camera.drawOffsetY + screen.height >> 1, this.verts[i].y);
+                this.verts[i].x = Fx.iadd(camera.drawOffsetX + SCREEN_HALF_WIDTH, this.verts[i].x);
+                this.verts[i].y = Fx.iadd(camera.drawOffsetY + SCREEN_HALF_HEIGHT, this.verts[i].y);
             }
         }
 
