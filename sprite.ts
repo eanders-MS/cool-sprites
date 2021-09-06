@@ -43,8 +43,8 @@ namespace cool {
         __drawCore(_1: any) {
             screen.drawQuad(
                 this.img,
-                Fx.toFloat(this.verts[0].y),
                 Fx.toFloat(this.verts[0].x),
+                Fx.toFloat(this.verts[0].y),
                 Fx.toFloat(this.verts[1].x),
                 Fx.toFloat(this.verts[1].y),
                 Fx.toFloat(this.verts[2].x),
