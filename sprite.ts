@@ -11,7 +11,7 @@ namespace cool {
 
         constructor(private img: Image, z: number = scene.SPRITE_Z) {
             super(
-                (target, camera) => {},
+                (_1, _2) => {},
                 () => true,
                 z);
             this.xfrm_ = new Transform();
@@ -32,7 +32,7 @@ namespace cool {
             this.verts = this.src.map(v => v.clone());
         }
 
-        __update(camera: scene.Camera, dt: number) {
+        __update(camera: scene.Camera, _2: any) {
             for (let i = 0; i < this.src.length; ++i) {
                 this.xfrm_.transformToRef(this.src[i], this.verts[i]);
                 this.verts[i].x = Fx.iadd(camera.drawOffsetX + SCREEN_HALF_WIDTH, this.verts[i].x);
@@ -40,17 +40,17 @@ namespace cool {
             }
         }
 
-        __drawCore(camera: scene.Camera) {
+        __drawCore(_1: any) {
             screen.drawQuad(
                 this.img,
-                Fx.toInt(this.verts[0].x),
-                Fx.toInt(this.verts[0].y),
-                Fx.toInt(this.verts[1].x),
-                Fx.toInt(this.verts[1].y),
-                Fx.toInt(this.verts[2].x),
-                Fx.toInt(this.verts[2].y),
-                Fx.toInt(this.verts[3].x),
-                Fx.toInt(this.verts[3].y));
+                Fx.toFloat(this.verts[0].x),
+                Fx.toFloat(this.verts[0].y),
+                Fx.toFloat(this.verts[1].x),
+                Fx.toFloat(this.verts[1].y),
+                Fx.toFloat(this.verts[2].x),
+                Fx.toFloat(this.verts[2].y),
+                Fx.toFloat(this.verts[3].x),
+                Fx.toFloat(this.verts[3].y));
         }
     }
 }
