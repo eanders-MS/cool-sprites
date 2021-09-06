@@ -20,7 +20,7 @@ namespace cool.fx {
     }
     export function round(v: Fx8): Fx8 {
         // lazy implementation
-        return fx.floor(Fx.add(Fx.mul(fx.sign(v), Fx8(0.5)), v));
+        return fx.floor(Fx.add(Fx.mul(fx.sign(v), Fx.oneHalfFx8), v));
     }
     export function mod(v: Fx8, q: Fx8): Fx8 {
         // lazy implementation
