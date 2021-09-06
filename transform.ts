@@ -12,6 +12,7 @@ namespace cool {
         private localRot_: number;
         private localScl_: Vec2;
         private parent_: Transform;
+        private children_: Transform[];
         private dirty_: boolean;
         private worldPos_: Vec2;
         private worldRot_: number;
@@ -19,12 +20,11 @@ namespace cool {
         public tag: string;
 
         public get dirty(): boolean {
-            return this.dirty_ || this.localPos_.dirty || this.localScl_.dirty || (this.parent && this.parent.dirty);
+            return this.dirty_;
         }
         public set dirty(v) {
-            this.dirty_ = false;
-            this.localPos_.dirty = false;
-            this.localScl_.dirty = false;
+            this.dirty_ = v;
+            if (v) { this.children_.forEach(c => c.dirty = true); }
         }
 
         public get worldPos() {
@@ -47,8 +47,8 @@ namespace cool {
 
         public get localRot() { return this.localRot_; }
         public set localRot(v: number) {
-            this.dirty_ = this.dirty_ || this.localRot_ !== v;
             this.localRot_ = v;
+            this.dirty = this.dirty_ || this.localRot_ !== v;
         }
 
         public get localScl() { return this.localScl_; }
@@ -58,26 +58,31 @@ namespace cool {
 
         public get parent() { return this.parent_; }
         public set parent(p: Transform) {
-            this.dirty_ = this.dirty_ || this.parent_ !== p;
+            if (p === this.parent_) return;
+            if (this.parent_) { this.parent_.unregChild(this); }
+            if (p) { p.regChild(this); }
             this.parent_ = p;
-        }
-
-        public get root() {
-            let node = this.parent;
-            while (node && node.parent) {
-                node = node.parent;
-            }
-            return node;
+            this.dirty = true;
         }
 
         constructor() {
+            this.children_ = [];
             this.localPos_ = new Vec2();
             this.localRot_ = 0;
             this.localScl_ = new Vec2(Fx.oneFx8, Fx.oneFx8);
+            this.localPos_.onChanged(() => this.dirty = true);
+            this.localScl_.onChanged(() => this.dirty = true);
             this.worldPos_ = new Vec2();
             this.worldRot_ = 0;
             this.worldScl_ = new Vec2(Fx.oneFx8, Fx.oneFx8);
             this.dirty_ = true;
+        }
+
+        public regChild(t: Transform) {
+            this.children_.push(t);
+        }
+        public unregChild(t: Transform) {
+            this.children_ = this.children_.filter(c => c !== t);
         }
 
         public copyFrom(src: Transform): this {

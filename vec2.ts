@@ -1,22 +1,29 @@
 namespace cool {
     export class Vec2 {
-        public dirty: boolean;
         public readonly: boolean;
+        private changed: () => void;
 
         public get x() { return this.x_; }
         public set x(v: Fx8) {
             if (this.readonly) throw "hey";
-            this.dirty = this.dirty || this.x_ !== v;
+            const dirty = this.x_ !== v;
             this.x_ = v;
+            if (dirty) { this.changed(); }
         }
         public get y() { return this.y_; }
         public set y(v: Fx8) {
             if (this.readonly) throw "hey";
-            this.dirty = this.dirty || this.x_ !== v;
+            const dirty = this.x_ !== v;
             this.y_ = v;
+            if (dirty) { this.changed(); }
         }
 
         constructor(public x_ = Fx.zeroFx8, public y_ = Fx.zeroFx8) {
+            this.changed = () => { };
+        }
+
+        public onChanged(handler: () => void) {
+            this.changed = handler;
         }
 
         public clone(): Vec2 {
