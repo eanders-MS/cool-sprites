@@ -43,14 +43,14 @@ namespace cool {
         __drawCore(_1: any) {
             screen.drawQuad(
                 this.img,
-                Fx.toInt(this.verts[0].y),
-                Fx.toInt(this.verts[0].x),
-                Fx.toInt(this.verts[1].x),
-                Fx.toInt(this.verts[1].y),
-                Fx.toInt(this.verts[2].x),
-                Fx.toInt(this.verts[2].y),
-                Fx.toInt(this.verts[3].x),
-                Fx.toInt(this.verts[3].y));
+                Fx.toFloat(this.verts[0].y),
+                Fx.toFloat(this.verts[0].x),
+                Fx.toFloat(this.verts[1].x),
+                Fx.toFloat(this.verts[1].y),
+                Fx.toFloat(this.verts[2].x),
+                Fx.toFloat(this.verts[2].y),
+                Fx.toFloat(this.verts[3].x),
+                Fx.toFloat(this.verts[3].y));
         }
     }
 }
