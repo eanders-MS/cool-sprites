@@ -9,11 +9,11 @@ namespace cool {
 
         public get xfrm() { return this.xfrm_; }
 
-        constructor(private img: Image) {
+        constructor(private img: Image, z: number = scene.SPRITE_Z) {
             super(
                 (target, camera) => {},
                 () => true,
-                scene.SPRITE_Z);
+                z);
             this.xfrm_ = new Transform();
             this.setImage(img);
         }
