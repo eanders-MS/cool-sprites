@@ -11,7 +11,7 @@ namespace cool {
 
         constructor(private img: Image, z: number = scene.SPRITE_Z) {
             super(
-                (_1, _2) => {},
+                (_1, _2) => { },
                 () => true,
                 z);
             this.xfrm_ = new Transform();
@@ -20,8 +20,8 @@ namespace cool {
 
         public setImage(img: Image) {
             this.img = img;
-            const w2 = Fx8(img.width >> 1);
-            const h2 = Fx8(img.height >> 1);
+            const w2 = Fx8(img.width / 2);
+            const h2 = Fx8(img.height / 2);
             // Vertices in clockwise order
             this.src = [
                 new Vec2(Fx.neg(w2), Fx.neg(h2)),
