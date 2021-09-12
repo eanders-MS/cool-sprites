@@ -87,8 +87,8 @@ namespace cool {
         }
 
         public static RotateToRef(v: Vec2, angle: number, ref: Vec2): Vec2 {
-            const s = fx.sin(angle);
-            const c = fx.cos(angle);
+            const s = fx.fsin(angle);
+            const c = fx.fcos(angle);
             const xp = Fx.sub(Fx.mul(v.x, c), Fx.mul(v.y, s));
             const yp = Fx.add(Fx.mul(v.x, s), Fx.mul(v.y, c));
             ref.x = xp;

@@ -1,5 +1,9 @@
 namespace cool.fx {
     export const negOneFx8 = Fx8(-1);
+    export const DEG_TO_RAD = Math.PI / 180;
+    export const RAD_TO_DEG = 180 / Math.PI;
+    export const DEG_TO_RAD_FX8 = Fx8(DEG_TO_RAD);
+    export const RAD_TO_DEG_FX8 = Fx8(RAD_TO_DEG);
 
     export function sign(v: Fx8): Fx8 {
         return v >= Fx.zeroFx8 ? Fx.oneFx8 : Fx8(-1);
@@ -39,12 +43,20 @@ namespace cool.fx {
     export function irandomRange(min: number, max: number): Fx8 {
         return Fx8(Math.randomRange(min, max));
     }
-    export function sin(angle: number): Fx8 {
+    export function fsin(angle: number): Fx8 {
         // lazy implementation
-        return Fx8(Math.sin(angle * Math.PI / 180));
+        return Fx8(Math.sin(angle * DEG_TO_RAD));
     }
-    export function cos(angle: number): Fx8 {
+    export function fcos(angle: number): Fx8 {
         // lazy implementation
-        return Fx8(Math.cos(angle * Math.PI / 180));
+        return Fx8(Math.cos(angle * DEG_TO_RAD));
+    }
+    export function sin(angle: Fx8): Fx8 {
+        // lazy implementation
+        return Fx8(Math.sin(Fx.toFloat(Fx.mul(angle, DEG_TO_RAD_FX8))));
+    }
+    export function cos(angle: Fx8): Fx8 {
+        // lazy implementation
+        return Fx8(Math.cos(Fx.toFloat(Fx.mul(angle, DEG_TO_RAD_FX8))));
     }
 }
