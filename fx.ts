@@ -35,12 +35,15 @@ namespace cool.fx {
         return Fx8(Math.sqrt(Fx.toFloat(v)));
     }
     export function random(): Fx8 {
+        // lazy implementation
         return Fx8(Math.random());
     }
     export function randomRange(min: Fx8, max: Fx8): Fx8 {
-        return fx.irandomRange(Fx.toFloat(min), Fx.toFloat(max));
+        // lazy implementation
+        return fx.frandomRange(Fx.toFloat(min), Fx.toFloat(max));
     }
-    export function irandomRange(min: number, max: number): Fx8 {
+    export function frandomRange(min: number, max: number): Fx8 {
+        // lazy implementation
         return Fx8(Math.randomRange(min, max));
     }
     export function fsin(angle: number): Fx8 {

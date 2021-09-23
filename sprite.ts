@@ -41,7 +41,8 @@ namespace cool {
         }
 
         __drawCore(_1: any) {
-            screen.drawQuad(
+            gpu.drawQuad(
+                screen,
                 this.img,
                 Fx.toInt(this.verts[0].x),
                 Fx.toInt(this.verts[0].y),
