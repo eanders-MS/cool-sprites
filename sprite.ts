@@ -44,14 +44,14 @@ namespace cool {
             gpu.drawQuad(
                 screen,
                 this.img,
-                Fx.toInt(this.verts[0].x),
-                Fx.toInt(this.verts[0].y),
-                Fx.toInt(this.verts[1].x),
-                Fx.toInt(this.verts[1].y),
-                Fx.toInt(this.verts[2].x),
-                Fx.toInt(this.verts[2].y),
-                Fx.toInt(this.verts[3].x),
-                Fx.toInt(this.verts[3].y));
+                this.verts[0].x as any as number,
+                this.verts[0].y as any as number,
+                this.verts[1].x as any as number,
+                this.verts[1].y as any as number,
+                this.verts[2].x as any as number,
+                this.verts[2].y as any as number,
+                this.verts[3].x as any as number,
+                this.verts[3].y as any as number);
         }
     }
 }
