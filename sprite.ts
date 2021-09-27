@@ -41,7 +41,7 @@ namespace cool {
         }
 
         __drawCore(_1: any) {
-            gpu.drawQuad(
+            gpu.drawTexturedQuad(
                 screen,
                 this.img,
                 this.verts[0].x as any as number,
