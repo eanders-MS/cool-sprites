@@ -12,13 +12,14 @@
         "transform.ts",
         "vec2.ts",
         "fx.ts",
-        "sprite.ts"
+        "sprite.ts",
+        "vertex.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.6.9",
+        "target": "1.7.2",
         "targetId": "arcade"
     },
     "supportedTargets": [
