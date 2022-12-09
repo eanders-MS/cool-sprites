@@ -19,16 +19,16 @@ namespace cool {
             this.setImage(img);
         }
 
-        public setImage(img: Image) {
+        public setImage(img: Image, u0: number = 0, u1: number = 1, v0: number = 0, v1: number = 1) {
             this.img = img;
             const w2 = Fx8(img.width / 2);
             const h2 = Fx8(img.height / 2);
             // Vertices in clockwise order
             this.src_ = [
-                new Vertex(new Vec2(Fx.neg(w2), Fx.neg(h2)), new Vec2(Fx.zeroFx8, Fx.zeroFx8)),
-                new Vertex(new Vec2(w2, Fx.neg(h2)), new Vec2(Fx.oneFx8, Fx.zeroFx8)),
-                new Vertex(new Vec2(w2, h2), new Vec2(Fx.oneFx8, Fx.oneFx8)),
-                new Vertex(new Vec2(Fx.neg(w2), h2), new Vec2(Fx.zeroFx8, Fx.oneFx8))
+                new Vertex(new Vec2(Fx.neg(w2), Fx.neg(h2)), new Vec2(Fx8(u0), Fx8(v0))),
+                new Vertex(new Vec2(w2, Fx.neg(h2)), new Vec2(Fx8(u1), Fx8(v0))),
+                new Vertex(new Vec2(w2, h2), new Vec2(Fx8(u1), Fx8(v1))),
+                new Vertex(new Vec2(Fx.neg(w2), h2), new Vec2(Fx8(u0), Fx8(v1)))
             ];
             this.verts_ = this.src_.map(v => v.clone());
         }
