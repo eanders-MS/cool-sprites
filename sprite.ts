@@ -33,6 +33,13 @@ namespace cool {
             this.verts_ = this.src_.map(v => v.clone());
         }
 
+        public setUV(u0: number, u1: number, v0: number, v1: number) {
+            this.src_[0].uv = new Vec2(Fx8(u0), Fx8(v0));
+            this.src_[1].uv = new Vec2(Fx8(u1), Fx8(v0));
+            this.src_[2].uv = new Vec2(Fx8(u1), Fx8(v1));
+            this.src_[3].uv = new Vec2(Fx8(u0), Fx8(v1));
+        }
+
         __update(camera: scene.Camera, _2: any) {
             for (let i = 0; i < this.src_.length; ++i) {
                 this.xfrm_.transformToRef(this.src_[i].pos, this.verts_[i].pos);
